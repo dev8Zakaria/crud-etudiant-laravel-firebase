@@ -1,0 +1,151 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+% Configuration de la page
+\geometry{hmargin=2.5cm,vmargin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Rapport de Projet : EduManager}
+\lhead{Laravel CRUD}
+\rfoot{Page \thepage}
+
+% Configuration du code
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{
+    \vspace{2cm}
+    \textbf{\Huge Application de Gestion des Étudiants}\\
+    \vspace{0.5cm}
+    \Large Rapport de Réalisation Technique -- EduManager\\
+    \vspace{2cm}
+    \includegraphics[width=0.4\textwidth]{example-image} % Remplacer par le logo si disponible
+    \vspace{2cm}
+}
+\author{\textbf{Réalisé par :} [Votre Nom]}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{Contexte du Projet}
+Dans le cadre de notre formation en développement web, nous avons conçu et réalisé une application complète de gestion des étudiants (EduManager). Ce projet a pour but de mettre en pratique l'architecture \textbf{MVC} (Modèle-Vue-Contrôleur) via le framework \textbf{Laravel 11}.
+
+\subsection{Objectifs}
+\begin{itemize}
+    \item Maîtriser l'installation et la configuration de l'environnement Laravel.
+    \item Implémenter un système d'authentification robuste.
+    \item Créer un CRUD (Create, Read, Update, Delete) complet pour les profils étudiants.
+    \item Concevoir une interface utilisateur moderne et responsive.
+\end{itemize}
+
+\section{Architecture Technique}
+
+\subsection{Technologies Utilisées}
+\begin{description}
+    \item[Backend :] PHP 8.2, Laravel 11
+    \item[Base de données :] MySQL (via XAMPP)
+    \item[Frontend :] Blade, CSS3 (Variables CSS), JavaScript
+    \item[Outils :] Composer, Artisan CLI, Lucide Icons
+\end{description}
+
+\subsection{Modélisation des Données}
+L'application repose sur deux entités principales liées par une relation \textit{One-to-One} :
+\begin{itemize}
+    \item \textbf{User} : Gère les identifiants de connexion et le rôle (admin ou étudiant).
+    \item \textbf{Etudiant} : Contient les informations académiques (CNE/Apogée, filière, photo...).
+\end{itemize}
+
+\section{Étapes de Réalisation}
+
+\subsection{1. Initialisation du Projet}
+Nous avons utilisé Composer pour créer le squelette de l'application :
+\begin{lstlisting}[language=bash]
+composer create-project laravel/laravel crud_etudiant
+cd crud_etudiant
+php artisan storage:link # Pour les images publiques
+\end{lstlisting}
+
+\subsection{2. Migrations de Base de Données}
+La structure de la table \texttt{etudiants} a été définie comme suit dans la migration :
+
+\begin{lstlisting}[language=PHP]
+Schema::create('etudiants', function (Blueprint $table) {
+    $table->id();
+    $table->string('numero_apogee')->unique();
+    $table->string('nom');
+    $table->string('prenom');
+    $table->string('email')->unique();
+    $table->string('telephone');
+    $table->string('photo')->nullable(); // Gestion de l'upload
+    $table->foreignId('user_id')->constrained()->onDelete('cascade');
+    $table->timestamps();
+});
+\end{lstlisting}
+
+\subsection{3. Authentification et Rôles}
+Nous avons implémenté un système d'inscription personnalisé dans \texttt{AuthController.php} qui crée simultanément l'utilisateur et son profil étudiant. L'accès à la partie administration est protégé par un Middleware \texttt{AdminMiddleware}.
+
+\subsection{4. Fonctionnalités CRUD}
+Le contrôleur \texttt{EtudiantController} gère la logique métier :
+\begin{itemize}
+    \item \textbf{Index} : Liste paginée avec recherche dynamique.
+    \item \textbf{Show} : Page de profil détaillée.
+    \item \textbf{Create/Edit} : Formulaires avec prévisualisation de l'image en JavaScript.
+    \item \textbf{Destroy} : Suppression sécurisée avec modal de confirmation.
+\end{itemize}
+
+\section{Interface Utilisateur (UI/UX)}
+Une attention particulière a été portée au design pour offrir une expérience ``Premium'' :
+\begin{itemize}
+    \item Utilisation d'une palette de couleurs cohérente (Indigo/Violet) via des variables CSS.
+    \item Navigation par barre latérale (Sidebar) fixe.
+    \item Remplacement des émojis par la bibliothèque d'icônes \textbf{Lucide}.
+    \item Feedback utilisateur via des messages de session (Succès/Erreur).
+\end{itemize}
+
+\section{Sécurité et Améliorations}
+\subsection{Intégration Firebase (Concept)}
+Pour la fonctionnalité de ``Mot de passe oublié'', nous avons étudié l'intégration de \textbf{Firebase Authentication}. Cela permet de déléguer l'envoi sécurisé des emails de réinitialisation à l'infrastructure de Google, évitant la configuration complexe d'un serveur SMTP local.
+
+\section{Conclusion}
+Ce projet a permis de consolider nos connaissances en développement Fullstack avec PHP/Laravel. L'application est fonctionnelle, sécurisée et présente une interface soignée adaptée aux besoins d'une administration scolaire.
+
+\end{document}
