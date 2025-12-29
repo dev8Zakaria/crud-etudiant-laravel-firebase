@@ -56,12 +56,10 @@ EduManager est une application CRUD (Create, Read, Update, Delete) moderne perme
 - **Blade** (moteur de templates Laravel)
 - **CSS3** avec variables CSS personnalisées
 - **JavaScript** vanilla
-- **Lucide Icons** pour l'iconographie moderne
 
 ### Outils
 - **Composer** - Gestionnaire de dépendances PHP
 - **Artisan CLI** - Interface en ligne de commande Laravel
-- **Git** - Contrôle de version
 
 ## 📦 Prérequis
 
@@ -72,7 +70,6 @@ Avant de commencer, assurez-vous d'avoir installé :
 - MySQL
 - XAMPP (ou équivalent)
 - Un compte Firebase (gratuit)
-- Git
 
 ## 🚀 Installation
 
@@ -333,16 +330,5 @@ Vérifiez que :
 2. Le chemin dans `.env` est correct
 3. Vous avez exécuté `php artisan config:clear`
 
-## 📝 Licence
 
-Ce projet est développé dans un cadre pédagogique.
 
-## 👨‍💻 Auteur
-
-**Zakaria**
-- GitHub: [@dev8Zakaria](https://github.com/dev8Zakaria)
-- Email: zakaria.ask07@gmail.com
-
----
-
-⭐ Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile !
