@@ -1,59 +1,348 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 EduManager - Système de Gestion des Étudiants
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Application web complète de gestion des profils étudiants développée avec Laravel 11 et Firebase Authentication.
 
-## About Laravel
+## 📋 Table des Matières
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Aperçu](#aperçu)
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies Utilisées](#technologies-utilisées)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Configuration Firebase](#configuration-firebase)
+- [Utilisation](#utilisation)
+- [Architecture](#architecture)
+- [Captures d'écran](#captures-décran)
+- [Auteur](#auteur)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Aperçu
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+EduManager est une application CRUD (Create, Read, Update, Delete) moderne permettant la gestion complète des profils étudiants. Le projet implémente une architecture hybride combinant MySQL pour le stockage des données et Firebase Authentication pour la sécurité et la gestion des identifiants.
 
-## Learning Laravel
+### Points Forts
+- ✅ Authentification sécurisée via Firebase
+- ✅ Interface utilisateur moderne et responsive
+- ✅ Gestion complète des profils étudiants (CRUD)
+- ✅ Upload et gestion de photos de profil
+- ✅ Système de rôles (Admin/Étudiant)
+- ✅ Réinitialisation de mot de passe via Firebase
+- ✅ Migration automatique des anciens comptes
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## ⚡ Fonctionnalités
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Pour les Administrateurs
+- 📊 Tableau de bord avec statistiques
+- 👥 Liste complète des étudiants avec recherche en temps réel
+- ➕ Ajout de nouveaux étudiants
+- ✏️ Modification des profils existants
+- 🗑️ Suppression sécurisée avec confirmation
+- 📸 Gestion des photos de profil
 
-## Laravel Sponsors
+### Pour les Étudiants
+- 👤 Inscription autonome
+- 🔐 Connexion sécurisée
+- 📋 Consultation de leur propre profil
+- 🔑 Réinitialisation de mot de passe
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Technologies Utilisées
 
-### Premium Partners
+### Backend
+- **PHP** 8.2+
+- **Laravel** 11
+- **MySQL** (via XAMPP)
+- **Firebase Admin SDK** pour l'authentification
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Frontend
+- **Blade** (moteur de templates Laravel)
+- **CSS3** avec variables CSS personnalisées
+- **JavaScript** vanilla
+- **Lucide Icons** pour l'iconographie moderne
 
-## Contributing
+### Outils
+- **Composer** - Gestionnaire de dépendances PHP
+- **Artisan CLI** - Interface en ligne de commande Laravel
+- **Git** - Contrôle de version
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📦 Prérequis
 
-## Code of Conduct
+Avant de commencer, assurez-vous d'avoir installé :
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- PHP >= 8.2
+- Composer
+- MySQL
+- XAMPP (ou équivalent)
+- Un compte Firebase (gratuit)
+- Git
 
-## Security Vulnerabilities
+## 🚀 Installation
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 1. Cloner le Projet
 
-## License
+```bash
+git clone https://github.com/dev8Zakaria/crud-etudiant-laravel-firebase.git
+cd crud-etudiant-laravel-firebase
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 2. Installer les Dépendances
+
+```bash
+composer install
+```
+
+### 3. Configuration de l'Environnement
+
+Copiez le fichier d'exemple et configurez vos variables :
+
+```bash
+cp .env.example .env
+```
+
+Modifiez le fichier `.env` avec vos paramètres :
+
+```env
+APP_NAME="EduManager"
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=crud_etudiant
+DB_USERNAME=root
+DB_PASSWORD=
+
+FIREBASE_CREDENTIALS=storage/app/firebase_credentials.json
+```
+
+### 4. Générer la Clé d'Application
+
+```bash
+php artisan key:generate
+```
+
+### 5. Créer la Base de Données
+
+Dans phpMyAdmin ou via MySQL CLI :
+
+```sql
+CREATE DATABASE crud_etudiant CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+### 6. Exécuter les Migrations et Seeders
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+Cela créera :
+- Les tables nécessaires
+- Un compte administrateur par défaut :
+  - Email : `zakaria.ask07@gmail.com`
+  - Mot de passe : `admin123`
+
+### 7. Créer le Lien Symbolique pour le Stockage
+
+```bash
+php artisan storage:link
+```
+
+## 🔥 Configuration Firebase
+
+### 1. Créer un Projet Firebase
+
+1. Allez sur [Firebase Console](https://console.firebase.google.com/)
+2. Cliquez sur "Ajouter un projet"
+3. Nommez votre projet (ex: "EduManager")
+4. Suivez les étapes de création
+
+### 2. Activer l'Authentification
+
+1. Dans le menu latéral : **Build** → **Authentication**
+2. Cliquez sur **Get Started**
+3. Onglet **Sign-in method**
+4. Activez **Email/Password**
+
+### 3. Générer la Clé Privée
+
+1. Cliquez sur l'icône **⚙️ Paramètres** → **Paramètres du projet**
+2. Onglet **Comptes de service**
+3. Section **Firebase Admin SDK**
+4. Cliquez sur **Générer une nouvelle clé privée**
+5. Un fichier JSON sera téléchargé
+
+### 4. Configurer Laravel
+
+1. Renommez le fichier téléchargé en `firebase_credentials.json`
+2. Placez-le dans `storage/app/`
+3. Vérifiez que le chemin dans `.env` est correct :
+   ```env
+   FIREBASE_CREDENTIALS=storage/app/firebase_credentials.json
+   ```
+
+### 5. Publier la Configuration
+
+```bash
+php artisan vendor:publish --provider="Kreait\Laravel\Firebase\ServiceProvider" --tag=config
+```
+
+## 🎮 Utilisation
+
+### Démarrer le Serveur
+
+```bash
+php artisan serve
+```
+
+L'application sera accessible sur : `http://127.0.0.1:8000`
+
+### Connexion Administrateur
+
+- **Email** : `zakaria.ask07@gmail.com`
+- **Mot de passe** : `admin123`
+
+### Inscription Étudiant
+
+1. Cliquez sur "Créer un compte" depuis la page de connexion
+2. Remplissez le formulaire avec :
+   - Nom d'utilisateur
+   - Email
+   - Mot de passe
+   - Numéro d'Apogée (unique)
+   - Nom et Prénom
+   - Téléphone
+   - Photo (optionnel)
+
+### Réinitialisation de Mot de Passe
+
+1. Cliquez sur "Mot de passe oublié ?" depuis la page de connexion
+2. Entrez votre email
+3. Un lien de réinitialisation sera généré (Mode Démo : affiché directement)
+4. Cliquez sur le lien pour définir un nouveau mot de passe via Firebase
+
+## 🏗️ Architecture
+
+### Modèle de Données
+
+```
+┌─────────────┐         ┌──────────────┐
+│    users    │ 1     1 │  etudiants   │
+├─────────────┤─────────├──────────────┤
+│ id          │         │ id           │
+│ name        │         │ numero_apogee│
+│ email       │         │ nom          │
+│ password    │         │ prenom       │
+│ role        │         │ email        │
+│ timestamps  │         │ telephone    │
+└─────────────┘         │ photo        │
+                        │ user_id (FK) │
+                        │ timestamps   │
+                        └──────────────┘
+```
+
+### Flux d'Authentification
+
+```
+Inscription
+├─> Création compte Firebase (email/password)
+└─> Création profil MySQL (données étudiant)
+
+Connexion
+├─> Validation Firebase (signInWithEmailAndPassword)
+├─> Vérification compte local MySQL
+└─> Session Laravel
+
+Réinitialisation
+├─> Vérification email en MySQL
+├─> Synchronisation Firebase si nécessaire
+├─> Génération lien sécurisé (getPasswordResetLink)
+└─> Affichage lien (Mode Démo)
+```
+
+### Structure des Dossiers Clés
+
+```
+crud_etudiant/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── AuthController.php          # Auth hybride Firebase+MySQL
+│   │   │   ├── FirebaseAuthController.php  # Réinitialisation mot de passe
+│   │   │   ├── EtudiantController.php      # CRUD étudiants
+│   │   │   └── DashboardController.php     # Tableau de bord
+│   │   └── Middleware/
+│   │       └── AdminMiddleware.php         # Protection routes admin
+│   └── Models/
+│       ├── User.php                        # Modèle utilisateur
+│       └── Etudiant.php                    # Modèle étudiant
+├── resources/
+│   └── views/
+│       ├── auth/                           # Vues authentification
+│       ├── etudiants/                      # Vues CRUD étudiants
+│       └── layouts/
+│           └── app.blade.php               # Layout principal
+├── database/
+│   ├── migrations/                         # Schémas de tables
+│   └── seeders/
+│       └── AdminSeeder.php                 # Création admin par défaut
+└── routes/
+    └── web.php                             # Définition des routes
+```
+
+## 📸 Captures d'écran
+
+### Page de Connexion
+Interface moderne avec design épuré et lien "Mot de passe oublié".
+
+### Tableau de Bord Admin
+Statistiques en temps réel et actions rapides.
+
+### Liste des Étudiants
+Tableau avec recherche dynamique et pagination.
+
+### Profil Étudiant
+Affichage détaillé avec photo et informations académiques.
+
+## 🔒 Sécurité
+
+- ✅ Mots de passe hashés (bcrypt)
+- ✅ Protection CSRF sur tous les formulaires
+- ✅ Validation des données côté serveur
+- ✅ Middleware de protection des routes
+- ✅ Authentification déléguée à Firebase
+- ✅ Gestion sécurisée des fichiers uploadés
+
+## 🐛 Dépannage
+
+### Erreur "ext-sodium is missing"
+
+Activez l'extension dans `php.ini` :
+```ini
+extension=sodium
+```
+
+### Erreur de migration "Table already exists"
+
+Réinitialisez la base :
+```bash
+php artisan migrate:fresh --seed
+```
+
+### Erreur Firebase "Credentials not found"
+
+Vérifiez que :
+1. Le fichier JSON est bien dans `storage/app/`
+2. Le chemin dans `.env` est correct
+3. Vous avez exécuté `php artisan config:clear`
+
+## 📝 Licence
+
+Ce projet est développé dans un cadre pédagogique.
+
+## 👨‍💻 Auteur
+
+**Zakaria**
+- GitHub: [@dev8Zakaria](https://github.com/dev8Zakaria)
+- Email: zakaria.ask07@gmail.com
+
+---
+
+⭐ Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile !
